@@ -21,11 +21,17 @@ def get_db():
 async def root():
     return {"message": "Hello World this is my new API!"}
 
-
 @app.get("/myname/{name}")
 async def myName(name: str):
     return {"message": f"Hello {name} this is my new API!"}
 
+@app.get("/myfullname/{name}")
+async def myFullName(name: str):
+    return {"message": f"Hello my full name is {name}."}
+
+@app.get("/technology")
+async def redirect_typer():
+    return RedirectResponse("https://images.pexels.com/photos/5380651/pexels-photo-5380651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
 
 @app.post("/users/create", response_model=schemas.UserCreate)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):

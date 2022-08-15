@@ -6,6 +6,8 @@ from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import SessionLocal, engine
 
+from fastapi.responses import RedirectResponse
+
 app = FastAPI()
 
 # Dependency
